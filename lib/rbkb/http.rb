@@ -1,12 +1,13 @@
+begin ; require 'rubygems' ; rescue LoadError ; end
+
+require 'rbkb'
 
 # ???Why???? would anyone create their own HTTP implementation in ruby with 
 # so many options out there? Short answer: Net::HTTP and others just don't cut 
 # it in lots of edge cases. I needed something I could control completely.
 
-module Rbkb
-  module Http
-    VERSION = "0.2.0"
-  end
+module Rbkb::Http
+  # nop
 end
 
 require 'time' # gives us Time.httpdate parser and output methods
