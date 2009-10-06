@@ -1,13 +1,13 @@
 = rbkb-http
 
-* http://github.com/emonti/rbkb
+HTTP protocol addons for the Ruby BlackBag (rbkb-http)
+
+* http://github.com/emonti/rbkb-http
 
 == DESCRIPTION
 
-Ruby BlackBag HTTP addons (rbkb-http)
-
-HTTP tools and libraries based on and complementary to the Ruby BlackBag 
-library.
+This library various includes HTTP protocol tools and libraries based on and 
+complementary to the Ruby BlackBag library.
 
 == REQUIREMENTS
 

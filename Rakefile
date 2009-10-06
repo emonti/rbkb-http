@@ -6,7 +6,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "rbkb-http"
-    gem.summary = %Q{HTTP add-ons for Ruby BlackBag}
+    gem.summary = %Q{HTTP protocol add-ons for Ruby BlackBag}
     gem.description = %Q{HTTP libraries and tools based on and complementary to Ruby BlackBag}
     gem.email = "emonti@matasano.com"
     gem.homepage = "http://github.com/emonti/rbkb-http"
@@ -25,19 +25,6 @@ Rake::TestTask.new(:test) do |test|
   test.pattern = 'test/**/test_*.rb' 
   test.verbose = true 
 end 
- 
-begin 
-  require 'rcov/rcovtask' 
-  Rcov::RcovTask.new do |test| 
-    test.libs << 'test' 
-    test.pattern = 'test/**/*_test.rb' 
-    test.verbose = true 
-  end 
-rescue LoadError 
-  task :rcov do 
-    abort "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov" 
-  end 
-end
 
 #require 'spec/rake/spectask'
 #Spec::Rake::SpecTask.new(:spec) do |spec|
