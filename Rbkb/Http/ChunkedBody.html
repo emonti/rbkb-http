@@ -1,0 +1,370 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../../style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../../custom.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../../syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="../../jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Class: Rbkb::Http::ChunkedBody</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section class Rbkb_Http_ChunkedBody">
+  <h1 class="title">Class: Rbkb::Http::ChunkedBody</h1>
+  <div class="section inheritance">
+  <ul>
+  <li>String</li><ul><li><a href="Body.html" title="Rbkb::Http::Body">Rbkb::Http::Body</a></li><ul><li>Rbkb::Http::ChunkedBody</li>
+  </ul></ul></ul>
+</div><div class="section docstring">
+  <p>
+ChunkedBody is designed for handling an HTTP body when using a
+&quot;Transfer-Encoding: chunked&quot; HTTP header.
+</p>
+
+</div><div class="section constants">
+  <div class="thisclass">
+  <h1>Constants</h1>
+  <dl>
+    
+      <dt id="DEFAULT_CHUNK_SIZE-constant">DEFAULT_CHUNK_SIZE</dt>
+      <dd>2048</dd>
+    
+  </dl>
+</div>
+
+</div><div class="section constructor">
+<h1>Constructor Summary</h1>
+  <p class="inherited_msg">
+    This class inherits a constructor from <a href="Body.html#initialize-instance_method" title="Rbkb::Http::Body">Rbkb::Http::Body</a>.
+  </p>
+</div>  <div class="section visibilitygroup public">
+    <h1>Public Visibility</h1>
+      <div class="section methodsummary class public">
+    <div class="inherited">
+  
+  <div>
+    <h1>Public Class Methods Inherited from <a href="Body.html" title="Rbkb::Http::Body">Rbkb::Http::Body</a></h1>
+    <p><span class='name'><a href="Body.html#parse-class_method" title="parse">parse</a></span></p>
+  </div>
+  
+</div>
+<div class="clear"></div>
+  </div>
+  <div class="section methodsummary instance public">
+    <h1>Public Instance Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#capture-instance_method" title="#capture">#capture</a></span><span class='args'>(str)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+Throws :expect_length with &#8216;true&#8217; when given incomplete data
+and expects to be called again with more body data to parse.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#to_raw-instance_method" title="#to_raw">#to_raw</a></span><span class='args'>(csz = nil)</span>
+            <span class='block'>{|_self| ... }</span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+</table>
+<div class="inherited">
+  
+  <div>
+    <h1>Public Instance Methods Inherited from <a href="Body.html" title="Rbkb::Http::Body">Rbkb::Http::Body</a></h1>
+    <p><span class='name'><a href="Body.html#base%3D-instance_method" title="base=">base=</a></span>, <span class='name'><a href="Body.html#capture_complete%3F-instance_method" title="capture_complete?">capture_complete?</a></span>, <span class='name'><a href="Body.html#data-instance_method" title="data">data</a></span>, <span class='name'><a href="Body.html#data%3D-instance_method" title="data=">data=</a></span>, <span class='name'><a href="Body.html#get_content_length-instance_method" title="get_content_length">get_content_length</a></span>, <span class='name'><a href="Body.html#get_content_type-instance_method" title="get_content_type">get_content_type</a></span>, <span class='name'><a href="Body.html#reset_capture-instance_method" title="reset_capture">reset_capture</a></span>, <span class='name'><a href="Body.html#reset_capture%21-instance_method" title="reset_capture!">reset_capture!</a></span></p>
+  </div>
+  
+</div>
+<div class="clear"></div>
+  </div>
+<div class="section methoddetails instance public">
+  <h1>Public Instance Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>capture</h3>
+</div><div id="capture-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>capture</span><span class='args'>(str)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+Throws :expect_length with &#8216;true&#8217; when given incomplete data
+and expects to be called again with more body data to parse.
+</p>
+<p>
+The caller can also detect this condition by checking the expect_length
+attribute but must still handle the throw().
+</p>
+<p>
+See also reset_capture and reset_capture!
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/body.rb', line 157</span>
+
+<span class='def def kw'>def</span> <span class='capture identifier id'>capture</span><span class='lparen token'>(</span><span class='str identifier id'>str</span><span class='rparen token'>)</span>
+  <span class='comment val'># chunked encoding is gross...</span>
+  <span class='if if kw'>if</span> <span class='@expect_length ivar id'>@expect_length</span>
+    <span class='sio identifier id'>sio</span> <span class='assign token'>=</span> <span class='StringIO constant id'>StringIO</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='@last_chunk ivar id'>@last_chunk</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span> <span class='plus op'>+</span> <span class='str identifier id'>str</span><span class='rparen token'>)</span>
+  <span class='else else kw'>else</span>
+    <span class='sio identifier id'>sio</span> <span class='assign token'>=</span> <span class='StringIO constant id'>StringIO</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='str identifier id'>str</span><span class='rparen token'>)</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='data identifier id'>data</span><span class='assign token'>=</span><span class='string val'>&quot;&quot;</span>
+  <span class='end end kw'>end</span>
+  <span class='@last_chunk ivar id'>@last_chunk</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
+
+  <span class='@expect_length ivar id'>@expect_length</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
+  <span class='while while kw'>while</span> <span class='not not kw'>not</span> <span class='sio identifier id'>sio</span><span class='dot token'>.</span><span class='eof? fid id'>eof?</span>
+    <span class='unless unless kw'>unless</span> <span class='m identifier id'>m</span><span class='assign token'>=</span><span class='regexp val'>/^([a-fA-F0-9]+)\s*(;[[:print:]\s]*)?\r?\n$/</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='line identifier id'>line</span><span class='assign token'>=</span><span class='sio identifier id'>sio</span><span class='dot token'>.</span><span class='readline identifier id'>readline</span><span class='rparen token'>)</span>
+      <span class='raise identifier id'>raise</span> <span class='dstring node'>&quot;invalid chunk at #{line.chomp.inspect}&quot;</span>
+    <span class='end end kw'>end</span>
+    <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='chunksz identifier id'>chunksz</span> <span class='assign token'>=</span> <span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='hex identifier id'>hex</span><span class='rparen token'>)</span> <span class='eq op'>==</span> <span class='integer val'>0</span>
+      <span class='@expect_length ivar id'>@expect_length</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
+      <span class='comment val'># XXX ignore Trailer headers</span>
+      <span class='break break kw'>break</span>
+    <span class='end end kw'>end</span>
+
+    <span class='if if kw'>if</span> <span class='lparen token'>(</span> <span class='lparen token'>(</span><span class='not not kw'>not</span> <span class='sio identifier id'>sio</span><span class='dot token'>.</span><span class='eof? fid id'>eof?</span><span class='rparen token'>)</span> <span class='and and kw'>and</span> 
+         <span class='lparen token'>(</span><span class='chunk identifier id'>chunk</span><span class='assign token'>=</span><span class='sio identifier id'>sio</span><span class='dot token'>.</span><span class='read identifier id'>read</span><span class='lparen token'>(</span><span class='chunksz identifier id'>chunksz</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='and and kw'>and</span> 
+         <span class='chunk identifier id'>chunk</span><span class='dot token'>.</span><span class='size identifier id'>size</span> <span class='eq op'>==</span> <span class='chunksz identifier id'>chunksz</span> <span class='and and kw'>and</span> 
+         <span class='lparen token'>(</span><span class='not not kw'>not</span> <span class='sio identifier id'>sio</span><span class='dot token'>.</span><span class='eof? fid id'>eof?</span><span class='rparen token'>)</span> <span class='and and kw'>and</span> <span class='lparen token'>(</span><span class='extra identifier id'>extra</span> <span class='assign token'>=</span> <span class='sio identifier id'>sio</span><span class='dot token'>.</span><span class='readline identifier id'>readline</span><span class='rparen token'>)</span> <span class='and and kw'>and</span>
+         <span class='lparen token'>(</span><span class='not not kw'>not</span> <span class='sio identifier id'>sio</span><span class='dot token'>.</span><span class='eof? fid id'>eof?</span><span class='rparen token'>)</span> <span class='and and kw'>and</span> <span class='lparen token'>(</span><span class='extra identifier id'>extra</span> <span class='lshft op'>&lt;&lt;</span> <span class='sio identifier id'>sio</span><span class='dot token'>.</span><span class='readline identifier id'>readline</span><span class='rparen token'>)</span>
+       <span class='rparen token'>)</span>
+      <span class='if if kw'>if</span> <span class='extra identifier id'>extra</span> <span class='match op'>=~</span> <span class='regexp val'>/^\r?\n\r?\n$/</span>
+        <span class='yield yield kw'>yield</span><span class='lparen token'>(</span><span class='chunk identifier id'>chunk</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+        <span class='self self kw'>self</span> <span class='lshft op'>&lt;&lt;</span> <span class='chunk identifier id'>chunk</span>
+      <span class='else else kw'>else</span>
+        <span class='raise identifier id'>raise</span> <span class='string val'>&quot;expected CRLF&quot;</span>
+      <span class='end end kw'>end</span>
+    <span class='else else kw'>else</span>
+      <span class='@last_chunk ivar id'>@last_chunk</span> <span class='assign token'>=</span> <span class='line identifier id'>line</span> <span class='plus op'>+</span> <span class='chunk identifier id'>chunk</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span> <span class='plus op'>+</span> <span class='extra identifier id'>extra</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+      <span class='break break kw'>break</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='throw identifier id'>throw</span><span class='lparen token'>(</span><span class='symbol val'>:expect_length</span><span class='comma token'>,</span> <span class='@expect_length ivar id'>@expect_length</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='@expect_length ivar id'>@expect_length</span>
+  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>to_raw</h3>
+</div><div id="to_raw-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>to_raw</span><span class='args'>(csz = nil)</span>
+      <span class='block'>{|_self| ... }</span>
+    </tt>
+  </div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="yield">
+  <h3>Yields:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt>_self</tt>, <tt>out.last</tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+<div class="yieldparam">
+  <h3>Yield Parameters:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href="" title="Rbkb::Http::ChunkedBody">Rbkb::Http::ChunkedBody</a></tt>]</span>
+      
+      
+        <span class='name'>_self</span>
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+the object that the method was called on
+</p>
+</span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/body.rb', line 200</span>
+
+<span class='def def kw'>def</span> <span class='to_raw identifier id'>to_raw</span><span class='lparen token'>(</span><span class='csz identifier id'>csz</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='csz identifier id'>csz</span> <span class='opasgn op'>||=</span> <span class='lparen token'>(</span><span class='@opts ivar id'>@opts</span><span class='lbrack token'>[</span><span class='symbol val'>:output_chunk_size</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='DEFAULT_CHUNK_SIZE constant id'>DEFAULT_CHUNK_SIZE</span><span class='rparen token'>)</span>
+  <span class='unless unless kw'>unless</span> <span class='csz identifier id'>csz</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span> <span class='Integer constant id'>Integer</span> <span class='and and kw'>and</span> <span class='csz identifier id'>csz</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;chunk size must be an integer &gt;= 1&quot;</span>
+  <span class='end end kw'>end</span>
+
+  <span class='out identifier id'>out</span><span class='assign token'>=</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='i identifier id'>i</span><span class='assign token'>=</span><span class='integer val'>0</span>
+  <span class='while while kw'>while</span> <span class='i identifier id'>i</span> <span class='leq op'>&lt;=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='size identifier id'>size</span>
+    <span class='chunk identifier id'>chunk</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='lbrack token'>[</span><span class='i identifier id'>i</span><span class='comma token'>,</span> <span class='csz identifier id'>csz</span><span class='rbrack token'>]</span>
+    <span class='out identifier id'>out</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot;#{chunk.size.to_s(16)}\r\n#{chunk}\r\n\r\n&quot;</span>
+    <span class='yield yield kw'>yield</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='out identifier id'>out</span><span class='dot token'>.</span><span class='last identifier id'>last</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+    <span class='i identifier id'>i</span><span class='opasgn op'>+=</span><span class='csz identifier id'>csz</span>
+  <span class='end end kw'>end</span>
+  <span class='out identifier id'>out</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;0\r\n&quot;</span>
+  <span class='yield yield kw'>yield</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='out identifier id'>out</span><span class='dot token'>.</span><span class='last identifier id'>last</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+  <span class='return return kw'>return</span> <span class='out identifier id'>out</span><span class='dot token'>.</span><span class='join identifier id'>join</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div>
+  </div>
+
+</div>
+    </div>
+    <div id="yard_info">
+  Generated on Tuesday, October 06 2009 at 11:06:27 AM by 
+  <abbr class="yard" title="Yay! A Ruby Documentation Tool"><a href="http://yard.soen.ca">YARD</a></abbr> 
+  0.2.3.5 (ruby-1.8.6).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../../style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../../custom.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../../syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="../../jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Module: Rbkb::Http::CommonInterface</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section module Rbkb_Http_CommonInterface">
+  <h1 class="title">Module: Rbkb::Http::CommonInterface</h1>
+  <div class="section constants">
+  
+</div>  <div class="section visibilitygroup public">
+    <h1>Public Visibility</h1>
+      <div class="section methodsummary instance public">
+    <h1>Public Instance Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#_common_init-instance_method" title="#_common_init">#_common_init</a></span><span class='args'>(raw = nil, opts = nil)</span>
+            <span class='block'>{|_self| ... }</span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+This provides a common method for use in &#8216;initialize&#8217; to slurp
+in opts parameters and optionally capture a raw blob.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#opts-instance_method" title="#opts">#opts</a></span><span class='args'></span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+Implements a common interface for an opts hash which is stored internally
+as the class variable @opts.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#opts%3D-instance_method" title="#opts=">#opts=</a></span><span class='args'>(o = nil)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+Implements a common interface for setting a new opts hash containing
+various named values for configuration, etc.
+</p>
+
+        
+      </td>
+    </tr>
+  
+</table>
+
+  </div>
+<div class="section methoddetails instance public">
+  <h1>Public Instance Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>_common_init</h3>
+</div><div id="_common_init-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>_common_init</span><span class='args'>(raw = nil, opts = nil)</span>
+      <span class='block'>{|_self| ... }</span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+This provides a common method for use in &#8216;initialize&#8217; to slurp
+in opts parameters and optionally capture a raw blob. This method also
+accepts a block to which it yields &#8216;self&#8217;
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="yield">
+  <h3>Yields:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt>_self</tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+<div class="yieldparam">
+  <h3>Yield Parameters:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href="" title="Rbkb::Http::CommonInterface">Rbkb::Http::CommonInterface</a></tt>]</span>
+      
+      
+        <span class='name'>_self</span>
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+the object that the method was called on
+</p>
+</span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+8
+9
+10
+11
+12
+13</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/common.rb', line 8</span>
+
+<span class='def def kw'>def</span> <span class='_common_init identifier id'>_common_init</span><span class='lparen token'>(</span><span class='raw identifier id'>raw</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span>
+  <span class='yield yield kw'>yield</span> <span class='self self kw'>self</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+  <span class='capture identifier id'>capture</span><span class='lparen token'>(</span><span class='raw identifier id'>raw</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='raw identifier id'>raw</span>
+  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>opts</h3>
+</div><div id="opts-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>opts</span><span class='args'></span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+Implements a common interface for an opts hash which is stored internally
+as the class variable @opts.
+</p>
+<p>
+The opts hash is designed to contain various named values for
+configuration, etc. The values and names are determined entirely by the
+class that uses it.
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+21
+22
+23</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/common.rb', line 21</span>
+
+<span class='def def kw'>def</span> <span class='opts identifier id'>opts</span>
+  <span class='@opts ivar id'>@opts</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>opts=</h3>
+</div><div id="opts=-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>opts=</span><span class='args'>(o = nil)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+Implements a common interface for setting a new opts hash containing
+various named values for configuration, etc. This also performs a minimal
+sanity check to ensure the object is a Hash.
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+28
+29
+30
+31</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/common.rb', line 28</span>
+
+<span class='def def kw'>def</span> <span class='opts= identifier id'>opts=</span><span class='lparen token'>(</span><span class='o identifier id'>o</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='raise identifier id'>raise</span> <span class='string val'>&quot;opts must be a hash&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='lparen token'>(</span><span class='o identifier id'>o</span> <span class='opasgn op'>||=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span> <span class='Hash constant id'>Hash</span>
+  <span class='@opts ivar id'>@opts</span> <span class='assign token'>=</span> <span class='o identifier id'>o</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div>
+  </div>
+
+</div>
+    </div>
+    <div id="yard_info">
+  Generated on Tuesday, October 06 2009 at 11:06:25 AM by 
+  <abbr class="yard" title="Yay! A Ruby Documentation Tool"><a href="http://yard.soen.ca">YARD</a></abbr> 
+  0.2.3.5 (ruby-1.8.6).
+</div>
+
+  </body>
+</html>

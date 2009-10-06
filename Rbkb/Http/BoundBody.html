@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../../style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../../custom.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../../syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="../../jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Class: Rbkb::Http::BoundBody</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section class Rbkb_Http_BoundBody">
+  <h1 class="title">Class: Rbkb::Http::BoundBody</h1>
+  <div class="section inheritance">
+  <ul>
+  <li>String</li><ul><li><a href="Body.html" title="Rbkb::Http::Body">Rbkb::Http::Body</a></li><ul><li>Rbkb::Http::BoundBody</li>
+  </ul></ul></ul>
+</div><div class="section docstring">
+  <p>
+BoundBody is designed for handling an HTTP body when using the usual
+&quot;Content-Length: NNN&quot; HTTP header.
+</p>
+
+</div><div class="section constants">
+  
+</div><div class="section constructor">
+<h1>Constructor Summary</h1>
+  <p class="inherited_msg">
+    This class inherits a constructor from <a href="Body.html#initialize-instance_method" title="Rbkb::Http::Body">Rbkb::Http::Body</a>.
+  </p>
+</div>  <div class="section visibilitygroup public">
+    <h1>Public Visibility</h1>
+      <div class="section methodsummary class public">
+    <div class="inherited">
+  
+  <div>
+    <h1>Public Class Methods Inherited from <a href="Body.html" title="Rbkb::Http::Body">Rbkb::Http::Body</a></h1>
+    <p><span class='name'><a href="Body.html#parse-class_method" title="parse">parse</a></span></p>
+  </div>
+  
+</div>
+<div class="clear"></div>
+  </div>
+  <div class="section methodsummary instance public">
+    <h1>Public Instance Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#capture-instance_method" title="#capture">#capture</a></span><span class='args'>(str)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+This method may throw :expect_length with one of the following values to
+indicate certain content-length conditions:.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#to_raw-instance_method" title="#to_raw">#to_raw</a></span><span class='args'>(*args)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+</table>
+<div class="inherited">
+  
+  <div>
+    <h1>Public Instance Methods Inherited from <a href="Body.html" title="Rbkb::Http::Body">Rbkb::Http::Body</a></h1>
+    <p><span class='name'><a href="Body.html#base%3D-instance_method" title="base=">base=</a></span>, <span class='name'><a href="Body.html#capture_complete%3F-instance_method" title="capture_complete?">capture_complete?</a></span>, <span class='name'><a href="Body.html#data-instance_method" title="data">data</a></span>, <span class='name'><a href="Body.html#data%3D-instance_method" title="data=">data=</a></span>, <span class='name'><a href="Body.html#get_content_length-instance_method" title="get_content_length">get_content_length</a></span>, <span class='name'><a href="Body.html#get_content_type-instance_method" title="get_content_type">get_content_type</a></span>, <span class='name'><a href="Body.html#reset_capture-instance_method" title="reset_capture">reset_capture</a></span>, <span class='name'><a href="Body.html#reset_capture%21-instance_method" title="reset_capture!">reset_capture!</a></span></p>
+  </div>
+  
+</div>
+<div class="clear"></div>
+  </div>
+<div class="section methoddetails instance public">
+  <h1>Public Instance Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>capture</h3>
+</div><div id="capture-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>capture</span><span class='args'>(str)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+This method may throw :expect_length with one of the following values to
+indicate certain content-length conditions:
+</p>
+<pre class="code">
+  <span class='gt op'>&gt;</span> <span class='integer val'>0</span> <span class='colon op'>:</span>   <span class='Got constant id'>Got</span> <span class='incomplete identifier id'>incomplete</span> <span class='data identifier id'>data</span> <span class='in in kw'>in</span> <span class='this identifier id'>this</span> <span class='capture identifier id'>capture</span><span class='dot token'>.</span> <span class='The constant id'>The</span> <span class='object identifier id'>object</span> <span class='expects identifier id'>expects</span>
+          <span class='capture identifier id'>capture</span> <span class='to identifier id'>to</span> <span class='be identifier id'>be</span> <span class='called identifier id'>called</span> <span class='again identifier id'>again</span> <span class='with identifier id'>with</span> <span class='more identifier id'>more</span> <span class='body identifier id'>body</span> <span class='data identifier id'>data</span><span class='dot token'>.</span>
+
+  <span class='lt op'>&lt;</span> <span class='integer val'>0</span> <span class='colon op'>:</span>   <span class='Got constant id'>Got</span> <span class='more identifier id'>more</span> <span class='data identifier id'>data</span> <span class='than identifier id'>than</span> <span class='expected identifier id'>expected</span><span class='comma token'>,</span> <span class='the identifier id'>the</span> <span class='caller identifier id'>caller</span> <span class='should identifier id'>should</span> <span class='truncate identifier id'>truncate</span> <span class='and and kw'>and</span>
+          <span class='handle identifier id'>handle</span> <span class='the identifier id'>the</span> <span class='extra identifier id'>extra</span> <span class='data identifier id'>data</span> <span class='in in kw'>in</span> <span class='some identifier id'>some</span> <span class='way identifier id'>way</span><span class='dot token'>.</span> <span class='Note constant id'>Note</span><span class='colon op'>:</span> <span class='Calling constant id'>Calling</span> <span class='capture identifier id'>capture</span> <span class='again identifier id'>again</span>
+          <span class='on identifier id'>on</span> <span class='this identifier id'>this</span> <span class='instance identifier id'>instance</span> <span class='will identifier id'>will</span> <span class='start identifier id'>start</span> <span class='a identifier id'>a</span> <span class='fresh identifier id'>fresh</span> <span class='body identifier id'>body</span> <span class='capture identifier id'>capture</span><span class='dot token'>.</span>
+</pre>
+<p>
+Caller can also detect the above conditions by checking the expect_length
+attribute but should still be prepared handle the throw().
+</p>
+<pre class="code">
+ <span class='integer val'>0</span><span class='div op'>/</span><span class='nil nil kw'>nil</span><span class='colon op'>:</span>  <span class='Got constant id'>Got</span> <span class='exactly identifier id'>exactly</span> <span class='what identifier id'>what</span> <span class='was identifier id'>was</span> <span class='expected identifier id'>expected</span><span class='dot token'>.</span> <span class='Caller constant id'>Caller</span> <span class='can identifier id'>can</span> <span class='proceed identifier id'>proceed</span> <span class='with identifier id'>with</span> <span class='fresh identifier id'>fresh</span>
+         <span class='captures identifier id'>captures</span> <span class='on identifier id'>on</span> <span class='this identifier id'>this</span> <span class='or or kw'>or</span> <span class='other identifier id'>other</span> <span class='Body constant id'>Body</span> <span class='objects identifier id'>objects</span><span class='dot token'>.</span>
+</pre>
+<p>
+See also reset_capture and reset_capture!
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/body.rb', line 114</span>
+
+<span class='def def kw'>def</span> <span class='capture identifier id'>capture</span><span class='lparen token'>(</span><span class='str identifier id'>str</span><span class='rparen token'>)</span>
+  <span class='raise identifier id'>raise</span> <span class='string val'>&quot;arg 0 must be a string&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='String constant id'>String</span> <span class='eqq op'>===</span> <span class='str identifier id'>str</span>
+
+  <span class='comment val'># Start fresh unless we're expecting more data</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='data identifier id'>data</span><span class='assign token'>=</span><span class='string val'>&quot;&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='@expect_length ivar id'>@expect_length</span> <span class='and and kw'>and</span> <span class='@expect_length ivar id'>@expect_length</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span>
+
+  <span class='if if kw'>if</span> <span class='not not kw'>not</span> <span class='clen identifier id'>clen</span><span class='assign token'>=</span><span class='get_content_length identifier id'>get_content_length</span><span class='lparen token'>(</span><span class='rparen token'>)</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;content-length is unknown. aborting capture&quot;</span>
+  <span class='else else kw'>else</span>
+    <span class='@expect_length ivar id'>@expect_length</span> <span class='assign token'>=</span> <span class='clen identifier id'>clen</span> <span class='minus op'>-</span> <span class='lparen token'>(</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='size identifier id'>size</span> <span class='plus op'>+</span> <span class='str identifier id'>str</span><span class='dot token'>.</span><span class='size identifier id'>size</span><span class='rparen token'>)</span>
+    <span class='self self kw'>self</span> <span class='lshft op'>&lt;&lt;</span> <span class='str identifier id'>str</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='clen identifier id'>clen</span> <span class='minus op'>-</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='size identifier id'>size</span><span class='rbrack token'>]</span>
+    <span class='if if kw'>if</span> <span class='@expect_length ivar id'>@expect_length</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span>
+      <span class='throw identifier id'>throw</span><span class='lparen token'>(</span><span class='symbol val'>:expect_length</span><span class='comma token'>,</span> <span class='@expect_length ivar id'>@expect_length</span><span class='rparen token'>)</span>
+    <span class='elsif elsif kw'>elsif</span> <span class='@expect_length ivar id'>@expect_length</span> <span class='lt op'>&lt;</span> <span class='integer val'>0</span>
+      <span class='throw identifier id'>throw</span><span class='lparen token'>(</span><span class='symbol val'>:expect_length</span><span class='comma token'>,</span> <span class='@expect_length ivar id'>@expect_length</span><span class='rparen token'>)</span>
+    <span class='else else kw'>else</span>
+      <span class='reset_capture identifier id'>reset_capture</span><span class='lparen token'>(</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>to_raw</h3>
+</div><div id="to_raw-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>to_raw</span><span class='args'>(*args)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+136
+137
+138
+139
+140
+141</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/body.rb', line 136</span>
+
+<span class='def def kw'>def</span> <span class='to_raw identifier id'>to_raw</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='@base ivar id'>@base</span>
+    <span class='@base ivar id'>@base</span><span class='dot token'>.</span><span class='headers identifier id'>headers</span><span class='dot token'>.</span><span class='set_header identifier id'>set_header</span><span class='lparen token'>(</span><span class='string val'>&quot;Content-Length&quot;</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='size identifier id'>size</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div>
+  </div>
+
+</div>
+    </div>
+    <div id="yard_info">
+  Generated on Tuesday, October 06 2009 at 11:06:25 AM by 
+  <abbr class="yard" title="Yay! A Ruby Documentation Tool"><a href="http://yard.soen.ca">YARD</a></abbr> 
+  0.2.3.5 (ruby-1.8.6).
+</div>
+
+  </body>
+</html>

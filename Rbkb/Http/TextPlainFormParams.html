@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../../style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../../custom.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../../syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="../../jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Class: Rbkb::Http::TextPlainFormParams</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section class Rbkb_Http_TextPlainFormParams">
+  <h1 class="title">Class: Rbkb::Http::TextPlainFormParams</h1>
+  <div class="section inheritance">
+  <ul>
+  <li>Array</li><ul><li><a href="Parameters.html" title="Rbkb::Http::Parameters">Rbkb::Http::Parameters</a></li><ul><li>Rbkb::Http::TextPlainFormParams</li>
+  </ul></ul></ul>
+</div><div class="section docstring">
+  <p>
+The TextPlainParams class is for Parameters values in the form of
+&#8216;text/plain&#8217; post data. These are usually simple key=value
+pairs separated by a CR?LF.
+</p>
+<p>
+XXX Note, safari seems to think these should be urlencoded, and not newline
+separated. joy!
+</p>
+
+</div><div class="section constants">
+  
+</div><div class="section constructor">
+<h1>Constructor Summary</h1>
+  <p class="inherited_msg">
+    This class inherits a constructor from <a href="Parameters.html#initialize-instance_method" title="Rbkb::Http::Parameters">Rbkb::Http::Parameters</a>.
+  </p>
+</div>  <div class="section visibilitygroup public">
+    <h1>Public Visibility</h1>
+      <div class="section methodsummary class public">
+    <div class="inherited">
+  
+  <div>
+    <h1>Public Class Methods Inherited from <a href="Parameters.html" title="Rbkb::Http::Parameters">Rbkb::Http::Parameters</a></h1>
+    <p><span class='name'><a href="Parameters.html#parse-class_method" title="parse">parse</a></span></p>
+  </div>
+  
+</div>
+<div class="clear"></div>
+  </div>
+  <div class="section methodsummary instance public">
+    <h1>Public Instance Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#capture-instance_method" title="#capture">#capture</a></span><span class='args'>(str)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#to_raw-instance_method" title="#to_raw">#to_raw</a></span><span class='args'></span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+</table>
+<div class="inherited">
+  
+  <div>
+    <h1>Public Instance Methods Inherited from <a href="Parameters.html" title="Rbkb::Http::Parameters">Rbkb::Http::Parameters</a></h1>
+    <p><span class='name'><a href="Parameters.html#delete_param-instance_method" title="delete_param">delete_param</a></span>, <span class='name'><a href="Parameters.html#get_all-instance_method" title="get_all">get_all</a></span>, <span class='name'><a href="Parameters.html#get_all_values_for-instance_method" title="get_all_values_for">get_all_values_for</a></span>, <span class='name'><a href="Parameters.html#get_param-instance_method" title="get_param">get_param</a></span>, <span class='name'><a href="Parameters.html#get_value_for-instance_method" title="get_value_for">get_value_for</a></span>, <span class='name'><a href="Parameters.html#set_all_for-instance_method" title="set_all_for">set_all_for</a></span>, <span class='name'><a href="Parameters.html#set_param-instance_method" title="set_param">set_param</a></span></p>
+  </div>
+  
+</div>
+<div class="clear"></div>
+  </div>
+<div class="section methoddetails instance public">
+  <h1>Public Instance Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>capture</h3>
+</div><div id="capture-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>capture</span><span class='args'>(str)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+142
+143
+144
+145
+146
+147
+148
+149</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/parameters.rb', line 142</span>
+
+<span class='def def kw'>def</span> <span class='capture identifier id'>capture</span><span class='lparen token'>(</span><span class='str identifier id'>str</span><span class='rparen token'>)</span>
+  <span class='raise identifier id'>raise</span> <span class='string val'>&quot;arg 0 must be a string&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='str identifier id'>str</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span> <span class='String constant id'>String</span>
+  <span class='str identifier id'>str</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='regexp val'>/\r?\n/</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='p identifier id'>p</span><span class='bitor op'>|</span> 
+    <span class='var identifier id'>var</span><span class='comma token'>,</span><span class='val identifier id'>val</span> <span class='assign token'>=</span> <span class='p identifier id'>p</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>'='</span><span class='comma token'>,</span><span class='integer val'>2</span><span class='rparen token'>)</span>
+    <span class='self self kw'>self</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrack token'>[</span><span class='var identifier id'>var</span><span class='comma token'>,</span><span class='val identifier id'>val</span><span class='rbrack token'>]</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>to_raw</h3>
+</div><div id="to_raw-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>to_raw</span><span class='args'></span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+132
+133
+134
+135
+136
+137
+138
+139
+140</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/parameters.rb', line 132</span>
+
+<span class='def def kw'>def</span> <span class='to_raw identifier id'>to_raw</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='k identifier id'>k</span><span class='comma token'>,</span><span class='v identifier id'>v</span><span class='bitor op'>|</span> 
+    <span class='if if kw'>if</span> <span class='v identifier id'>v</span>
+      <span class='dstring node'>&quot;#{k}=#{v.urlenc}&quot;</span> 
+    <span class='else else kw'>else</span> 
+      <span class='dstring node'>&quot;#{k}&quot;</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>'\r\n'</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div>
+  </div>
+
+</div>
+    </div>
+    <div id="yard_info">
+  Generated on Tuesday, October 06 2009 at 11:06:25 AM by 
+  <abbr class="yard" title="Yay! A Ruby Documentation Tool"><a href="http://yard.soen.ca">YARD</a></abbr> 
+  0.2.3.5 (ruby-1.8.6).
+</div>
+
+  </body>
+</html>

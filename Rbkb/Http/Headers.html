@@ -1,0 +1,1913 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../../style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../../custom.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../../syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="../../jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Class: Rbkb::Http::Headers</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section class Rbkb_Http_Headers">
+  <h1 class="title">Class: Rbkb::Http::Headers</h1>
+  <div class="section inheritance">
+  <ul>
+  <li>Array</li><ul><li>Rbkb::Http::Headers</li>
+  </ul></ul>
+</div><div class="section mixins">
+  <h1>Included Modules</h1>
+  <p><a href="Headers/CommonInterface.html" title="Rbkb::Http::CommonInterface">Rbkb::Http::CommonInterface</a></p>
+</div>
+<div class="section docstring">
+  <p>
+A base class for RequestHeaders and ResponseHeaders
+</p>
+<p>
+Includes common implementations of to_raw, to_raw_array, capture, and the
+class method parse
+</p>
+<p>
+The Headers array are stored internally as an named value pairs array.
+</p>
+<p>
+The headers are generally name/value pairs in the form of:
+</p>
+<pre class="code">
+  <span class='lbrack token'>[</span>  <span class='lbrack token'>[</span><span class='string val'>&quot;Name1&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;value1&quot;</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='string val'>&quot;Name2&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;value2&quot;</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='dot3 op'>...</span>  <span class='rbrack token'>]</span>
+</pre>
+<p>
+Which will be rendered with to_raw() to (or captured with capture() from):
+</p>
+<pre class="code">
+  <span class='Name1 constant id'>Name1</span><span class='colon op'>:</span> <span class='value1 identifier id'>value1</span>
+  <span class='Name2 constant id'>Name2</span><span class='colon op'>:</span> <span class='value2 identifier id'>value2</span>
+  <span class='dot3 op'>...</span>
+</pre>
+<p>
+This has the benefit of letting the data= accessor automatically render a
+Hash or any other Enumerable to a Headers object through the use of to_a.
+However it has the caveat that named pairs are expected on various
+operations.
+</p>
+
+</div><div class="section attributes">
+  <h1>Attributes</h1>
+
+  
+    <div class="instance">
+      <h2>Instance Attributes</h2>
+      <table>
+      
+        
+        <tr class="">
+          <th class='signature'>
+            <span class='name'>base</span>
+          </td>
+          <td class="readwrite">
+            [<span id='base-instance_method'>R</span>] 
+          </td>
+          <td class="visibility">
+            public
+          </td>
+          <td class="docstring">
+            <p>
+Returns the value of attribute <tt>base</tt>.
+</p>
+
+            
+          </td>
+        </tr>
+        
+      
+      </table>
+    </div>
+  
+</div>
+<div class="section constants">
+  
+</div><div class="section constructor">
+<h1>Constructor Summary</h1>
+  <div id="initialize-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>initialize</span><span class='args'>(*args)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+Instantiates a new Headers object.
+</p>
+<p>
+Arguments:
+</p>
+<pre class="code">
+  <span class='raw identifier id'>raw</span><span class='colon op'>:</span>  <span class='String constant id'>String</span> <span class='or or kw'>or</span> <span class='Enumerable constant id'>Enumerable</span><span class='dot token'>.</span> <span class='Strings constant id'>Strings</span> <span class='are identifier id'>are</span> <span class='parsed identifier id'>parsed</span> <span class='with identifier id'>with</span> <span class='capture identifier id'>capture</span><span class='dot token'>.</span>
+        <span class='Enumerables constant id'>Enumerables</span> <span class='are identifier id'>are</span> <span class='converted identifier id'>converted</span> <span class='with identifier id'>with</span> <span class='string val'>'to_a'</span> <span class='and and kw'>and</span> <span class='stored identifier id'>stored</span> <span class='directly identifier id'>directly</span><span class='dot token'>.</span>
+
+  <span class='opts identifier id'>opts</span><span class='colon op'>:</span> <span class='Options constant id'>Options</span> <span class='which identifier id'>which</span> <span class='affect identifier id'>affect</span> <span class='the identifier id'>the</span> <span class='behavior identifier id'>behavior</span> <span class='of identifier id'>of</span> <span class='the identifier id'>the</span> <span class='Headers constant id'>Headers</span> <span class='object identifier id'>object</span><span class='dot token'>.</span>
+        <span class='lparen token'>(</span><span class='none identifier id'>none</span> <span class='currently identifier id'>currently</span> <span class='defined identifier id'>defined</span><span class='rparen token'>)</span>
+</pre>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 62</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span> <span class='Enumerable constant id'>Enumerable</span>
+    <span class='raw identifier id'>raw</span><span class='assign token'>=</span><span class='args identifier id'>args</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
+    <span class='args identifier id'>args</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span>
+    <span class='_common_init identifier id'>_common_init</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='raw identifier id'>raw</span><span class='dot token'>.</span><span class='to_a identifier id'>to_a</span>
+  <span class='else else kw'>else</span>
+    <span class='_common_init identifier id'>_common_init</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+</div>  <div class="section visibilitygroup public">
+    <h1>Public Visibility</h1>
+      <div class="section methodsummary class public">
+    <h1>Public Class Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#parse-class_method" title="parse">parse</a></span><span class='args'>(str)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+Instantiates a new Headers object and returns the result of capture(str)
+Note, this method does not distinguish between ResponseHeaders or
+RequestHeaders, and so the object may need to be extended with one or the
+other, if you need access to specific behviors from either.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#parse_full_headers-class_method" title="parse_full_headers">parse_full_headers</a></span><span class='args'>(str, first_obj)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+Instantiates a new Headers object and returns the result of
+capture_full_headers(str, first_obj).
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#request_hdr-class_method" title="request_hdr">request_hdr</a></span><span class='args'>(*args)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+Class method to instantiate a new RequestHeaders object.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#response_hdr-class_method" title="response_hdr">response_hdr</a></span><span class='args'>(*args)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+Class method to instantiate a new ResponseHeaders object.
+</p>
+
+        
+      </td>
+    </tr>
+  
+</table>
+
+  </div>
+  <div class="section methodsummary instance public">
+    <h1>Public Instance Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#base%3D-instance_method" title="#base=">#base=</a></span><span class='args'>(b)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+Conditionally sets the @base class variable if it is a kind of Base object.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#capture-instance_method" title="#capture">#capture</a></span><span class='args'>(str)</span>
+            <span class='block'>{|_self| ... }</span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+Captures a raw string of headers into this instance&#8217;s internal array.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#capture_complete%3F-instance_method" title="#capture_complete?">#capture_complete?</a></span><span class='args'></span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+Indicates whether this object is ready to capture fresh data, or is waiting
+for additional data or a reset from a previous incomplete or otherwise
+broken capture.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#capture_full_headers-instance_method" title="#capture_full_headers">#capture_full_headers</a></span><span class='args'>(str, first_obj = nil)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+This method parses a full set of raw headers from the &#8216;str&#8217;
+argument.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#data-instance_method" title="#data">#data</a></span><span class='args'></span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+The data method provides a common interface to access internal non-raw
+information stored in the object.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#data%3D-instance_method" title="#data=">#data=</a></span><span class='args'>(d)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+The data= method provides a common interface to access internal non-raw
+information stored in the object.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#delete_header-instance_method" title="#delete_header">#delete_header</a></span><span class='args'>(k)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#get_all-instance_method" title="#get_all">#get_all</a></span><span class='args'>(k)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#get_all_values_for-instance_method" title="#get_all_values_for">#get_all_values_for</a></span><span class='args'>(k)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+          <span class='alias'>#all_values_for</span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#get_first_obj-instance_method" title="#get_first_obj">#get_first_obj</a></span><span class='args'></span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+See capture_full_headers.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#get_header-instance_method" title="#get_header">#get_header</a></span><span class='args'>(k)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#get_parameterized_value-instance_method" title="#get_parameterized_value">#get_parameterized_value</a></span><span class='args'>(k)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+          <span class='alias'>#parameterized_value</span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+returns a header value after &quot;fully&quot; parsing it.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#get_value_for-instance_method" title="#get_value_for">#get_value_for</a></span><span class='args'>(k)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+          <span class='alias'>#get_header_value</span>
+        
+          <span class='alias'>#value_for</span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#reset_capture-instance_method" title="#reset_capture">#reset_capture</a></span><span class='args'></span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+This method will non-destructively reset the capture state on this object.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#reset_capture%21-instance_method" title="#reset_capture!">#reset_capture!</a></span><span class='args'></span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+This method will destructively reset the capture state on this object.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#set_header-instance_method" title="#set_header">#set_header</a></span><span class='args'>(k, v)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+          <span class='alias'>#set_all_for</span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#set_parameterized_value-instance_method" title="#set_parameterized_value">#set_parameterized_value</a></span><span class='args'>(k, v)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#to_raw-instance_method" title="#to_raw">#to_raw</a></span><span class='args'></span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+The to_raw method returns a raw string of headers as they appear on the
+wire.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#to_raw_array-instance_method" title="#to_raw_array">#to_raw_array</a></span><span class='args'></span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+The to_raw_array method returns an interim formatted array of raw
+&quot;Cookie: Value&quot; strings.
+</p>
+
+        
+      </td>
+    </tr>
+  
+</table>
+<div class="included">
+  
+  <div>
+    <h1>Public Instance Methods Included from <a href="Headers/CommonInterface.html" title="Rbkb::Http::CommonInterface">Rbkb::Http::CommonInterface</a></h1>
+    <p><span class='name'><a href="CommonInterface.html#_common_init-instance_method" title="_common_init">_common_init</a></span>, <span class='name'><a href="CommonInterface.html#opts-instance_method" title="opts">opts</a></span>, <span class='name'><a href="CommonInterface.html#opts%3D-instance_method" title="opts=">opts=</a></span></p>
+  </div>
+  
+</div>
+<div class="clear"></div>
+  </div>
+<div class="section methoddetails class public">
+  <h1>Public Class Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>parse</h3>
+</div><div id="parse-class_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>parse</span><span class='args'>(str)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+Instantiates a new Headers object and returns the result of capture(str)
+Note, this method does not distinguish between ResponseHeaders or
+RequestHeaders, and so the object may need to be extended with one or the
+other, if you need access to specific behviors from either.
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+43
+44
+45</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 43</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='parse identifier id'>parse</span><span class='lparen token'>(</span><span class='str identifier id'>str</span><span class='rparen token'>)</span>
+  <span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='capture identifier id'>capture</span><span class='lparen token'>(</span><span class='str identifier id'>str</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>parse_full_headers</h3>
+</div><div id="parse_full_headers-class_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>parse_full_headers</span><span class='args'>(str, first_obj)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+Instantiates a new Headers object and returns the result of
+capture_full_headers(str, first_obj)
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+49
+50
+51</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 49</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='parse_full_headers identifier id'>parse_full_headers</span><span class='lparen token'>(</span><span class='str identifier id'>str</span><span class='comma token'>,</span> <span class='first_obj identifier id'>first_obj</span><span class='rparen token'>)</span>
+  <span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='capture_full_headers identifier id'>capture_full_headers</span><span class='lparen token'>(</span><span class='str identifier id'>str</span><span class='comma token'>,</span> <span class='first_obj identifier id'>first_obj</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>request_hdr</h3>
+</div><div id="request_hdr-class_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>request_hdr</span><span class='args'>(*args)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+Class method to instantiate a new RequestHeaders object
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+30
+31
+32</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 30</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='request_hdr identifier id'>request_hdr</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='Headers constant id'>Headers</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='extend identifier id'>extend</span><span class='lparen token'>(</span><span class='RequestHeaders constant id'>RequestHeaders</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>response_hdr</h3>
+</div><div id="response_hdr-class_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>response_hdr</span><span class='args'>(*args)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+Class method to instantiate a new ResponseHeaders object
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+35
+36
+37</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 35</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='response_hdr identifier id'>response_hdr</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='Headers constant id'>Headers</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='extend identifier id'>extend</span><span class='lparen token'>(</span><span class='ResponseHeaders constant id'>ResponseHeaders</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div><div class="section methoddetails instance public">
+  <h1>Public Instance Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>base=</h3>
+</div><div id="base=-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>base=</span><span class='args'>(b)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+Conditionally sets the @base class variable if it is a kind of Base object.
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+78
+79
+80
+81
+82
+83
+84</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 78</span>
+
+<span class='def def kw'>def</span> <span class='base= identifier id'>base=</span><span class='lparen token'>(</span><span class='b identifier id'>b</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='b identifier id'>b</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='or or kw'>or</span> <span class='b identifier id'>b</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span> <span class='Base constant id'>Base</span>
+    <span class='@base ivar id'>@base</span> <span class='assign token'>=</span> <span class='b identifier id'>b</span>
+  <span class='else else kw'>else</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;base must be a kind of Base object or nil&quot;</span> 
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>capture</h3>
+</div><div id="capture-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>capture</span><span class='args'>(str)</span>
+      <span class='block'>{|_self| ... }</span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+Captures a raw string of headers into this instance&#8217;s internal array.
+Note: This method expects not to include the first element such as a
+RequestAction or ResponseStatus. See capture_full_headers for a version
+that can handle this.
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="yield">
+  <h3>Yields:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt>_self</tt>, <tt>heads</tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+<div class="yieldparam">
+  <h3>Yield Parameters:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href="" title="Rbkb::Http::Headers">Rbkb::Http::Headers</a></tt>]</span>
+      
+      
+        <span class='name'>_self</span>
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+the object that the method was called on
+</p>
+</span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 202</span>
+
+<span class='def def kw'>def</span> <span class='capture identifier id'>capture</span><span class='lparen token'>(</span><span class='str identifier id'>str</span><span class='rparen token'>)</span>
+
+  <span class='raise identifier id'>raise</span> <span class='string val'>&quot;arg 0 must be a string&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='str identifier id'>str</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span><span class='lparen token'>(</span><span class='String constant id'>String</span><span class='rparen token'>)</span>
+  <span class='heads identifier id'>heads</span> <span class='assign token'>=</span> <span class='str identifier id'>str</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='regexp val'>/\s*\r?\n/</span><span class='rparen token'>)</span>
+
+  <span class='comment val'># pass interim parsed headers to a block if given</span>
+  <span class='yield yield kw'>yield</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='heads identifier id'>heads</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='replace identifier id'>replace</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span> <span class='if if_mod kw'>if</span> <span class='capture_complete? fid id'>capture_complete?</span> 
+  <span class='heads identifier id'>heads</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='s identifier id'>s</span><span class='bitor op'>|</span> 
+    <span class='k identifier id'>k</span><span class='comma token'>,</span><span class='v identifier id'>v</span> <span class='assign token'>=</span> <span class='s identifier id'>s</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='regexp val'>/\s*:\s*/</span><span class='comma token'>,</span> <span class='integer val'>2</span><span class='rparen token'>)</span> 
+    <span class='self self kw'>self</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrack token'>[</span><span class='k identifier id'>k</span><span class='comma token'>,</span><span class='v identifier id'>v</span><span class='rbrack token'>]</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>capture_complete?</h3>
+</div><div id="capture_complete?-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>capture_complete?</span><span class='args'></span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+Indicates whether this object is ready to capture fresh data, or is waiting
+for additional data or a reset from a previous incomplete or otherwise
+broken capture. See also: reset_capture, reset_capture!
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+265
+266
+267</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 265</span>
+
+<span class='def def kw'>def</span> <span class='capture_complete? fid id'>capture_complete?</span>
+  <span class='not not kw'>not</span> <span class='@capture_state ivar id'>@capture_state</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>capture_full_headers</h3>
+</div><div id="capture_full_headers-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>capture_full_headers</span><span class='args'>(str, first_obj = nil)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+This method parses a full set of raw headers from the &#8216;str&#8217;
+argument. Unlike the regular capture method, the string is expected to
+start with a line which will be parsed by first_obj using its own capture
+method. For example, first_obj would parse something like &quot;GET /
+HTTP/1.1&quot; for RequestAction or &quot;HTTP/1.1 200 OK&quot; for
+ResponseStatus. If first_obj is not defined, there will be an attempt to
+resolve it by calling get_first_obj which should return the appropriate
+type of object or raise an exception.
+</p>
+<p>
+Returns a 2 element array containing [first_entity, headers] where first
+entity is the instantiated first_obj object and headers is self.
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 235</span>
+
+<span class='def def kw'>def</span> <span class='capture_full_headers identifier id'>capture_full_headers</span><span class='lparen token'>(</span><span class='str identifier id'>str</span><span class='comma token'>,</span> <span class='first_obj identifier id'>first_obj</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='first_obj identifier id'>first_obj</span> <span class='opasgn op'>||=</span> <span class='get_first_obj identifier id'>get_first_obj</span><span class='lparen token'>(</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='x identifier id'>x</span><span class='bitor op'>|</span><span class='rbrace token'>}</span>
+
+  <span class='first identifier id'>first</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
+  <span class='capture identifier id'>capture</span><span class='lparen token'>(</span><span class='str identifier id'>str</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='this identifier id'>this</span><span class='comma token'>,</span> <span class='heads identifier id'>heads</span><span class='bitor op'>|</span>
+    <span class='first identifier id'>first</span> <span class='assign token'>=</span> <span class='first_obj identifier id'>first_obj</span><span class='dot token'>.</span><span class='capture identifier id'>capture</span><span class='lparen token'>(</span><span class='heads identifier id'>heads</span><span class='dot token'>.</span><span class='shift identifier id'>shift</span><span class='rparen token'>)</span>
+    <span class='yield yield kw'>yield</span><span class='lparen token'>(</span><span class='heads identifier id'>heads</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='lbrack token'>[</span><span class='first identifier id'>first</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>data</h3>
+</div><div id="data-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>data</span><span class='args'></span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+The data method provides a common interface to access internal non-raw
+information stored in the object.
+</p>
+<p>
+The Headers incarnation returns the internal headers array (actually self).
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+91
+92
+93</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 91</span>
+
+<span class='def def kw'>def</span> <span class='data identifier id'>data</span>
+  <span class='self self kw'>self</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>data=</h3>
+</div><div id="data=-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>data=</span><span class='args'>(d)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+The data= method provides a common interface to access internal non-raw
+information stored in the object.
+</p>
+<p>
+This method stores creates a shallow copy for anything but another Headers
+object which it references directly. A few rules are enforced:
+</p>
+<pre class="code">
+  <span class='mult op'>*</span> <span class='integer val'>1</span><span class='minus op'>-</span><span class='dimensional identifier id'>dimensional</span> <span class='elements identifier id'>elements</span> <span class='will identifier id'>will</span> <span class='be identifier id'>be</span> <span class='expanded identifier id'>expanded</span> <span class='to identifier id'>to</span> <span class='tuples identifier id'>tuples</span> <span class='with identifier id'>with</span> <span class='string val'>'nil'</span> <span class='as identifier id'>as</span> <span class='the identifier id'>the</span>
+    <span class='second identifier id'>second</span> <span class='value identifier id'>value</span><span class='dot token'>.</span>
+
+  <span class='mult op'>*</span> <span class='Names constant id'>Names</span> <span class='which identifier id'>which</span> <span class='are identifier id'>are</span> <span class='enumerables identifier id'>enumerables</span> <span class='will identifier id'>will</span> <span class='be identifier id'>be</span> <span class='string val'>'join()'</span><span class='ed identifier id'>ed</span><span class='comma token'>,</span> <span class='but identifier id'>but</span> <span class='not not kw'>not</span> <span class='values identifier id'>values</span><span class='dot token'>.</span>
+</pre>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 104</span>
+
+<span class='def def kw'>def</span> <span class='data= identifier id'>data=</span><span class='lparen token'>(</span><span class='d identifier id'>d</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='d identifier id'>d</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span> <span class='Headers constant id'>Headers</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='replace identifier id'>replace</span> <span class='d identifier id'>d</span>
+  <span class='else else kw'>else</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='replace identifier id'>replace</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+    <span class='d identifier id'>d</span><span class='dot token'>.</span><span class='to_a identifier id'>to_a</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='k identifier id'>k</span><span class='comma token'>,</span> <span class='v identifier id'>v</span><span class='bitor op'>|</span> 
+      <span class='k identifier id'>k</span> <span class='assign token'>=</span> <span class='k identifier id'>k</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span> <span class='if if_mod kw'>if</span> <span class='k identifier id'>k</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span> <span class='Numeric constant id'>Numeric</span>
+      <span class='self self kw'>self</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrack token'>[</span><span class='k identifier id'>k</span><span class='comma token'>,</span><span class='v identifier id'>v</span><span class='rbrack token'>]</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>delete_header</h3>
+</div><div id="delete_header-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>delete_header</span><span class='args'>(k)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+188
+189
+190</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 188</span>
+
+<span class='def def kw'>def</span> <span class='delete_header identifier id'>delete_header</span><span class='lparen token'>(</span><span class='k identifier id'>k</span><span class='rparen token'>)</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='delete_if identifier id'>delete_if</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span> <span class='eq op'>==</span> <span class='k identifier id'>k</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>get_all</h3>
+</div><div id="get_all-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>get_all</span><span class='args'>(k)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+123
+124
+125</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 123</span>
+
+<span class='def def kw'>def</span> <span class='get_all identifier id'>get_all</span><span class='lparen token'>(</span><span class='k identifier id'>k</span><span class='rparen token'>)</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='select identifier id'>select</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span> <span class='eq op'>==</span> <span class='k identifier id'>k</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>get_all_values_for</h3>
+</div><div id="get_all_values_for-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>get_all_values_for</span><span class='args'>(k)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+<p class="aliases">
+  <span class="aka">Also known as:</span>
+  
+    <tt id="all_values_for-instance_method">all_values_for</tt>
+  
+</p>
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+127
+128
+129</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 127</span>
+
+<span class='def def kw'>def</span> <span class='get_all_values_for identifier id'>get_all_values_for</span><span class='lparen token'>(</span><span class='k identifier id'>k</span><span class='rparen token'>)</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='get_all identifier id'>get_all</span><span class='lparen token'>(</span><span class='k identifier id'>k</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='collect identifier id'>collect</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='comma token'>,</span><span class='v identifier id'>v</span><span class='bitor op'>|</span> <span class='v identifier id'>v</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>get_first_obj</h3>
+</div><div id="get_first_obj-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>get_first_obj</span><span class='args'></span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+See capture_full_headers. This method is used to resolve the parser for the
+first entity above the HTTP headers. This instance is designed to raise an
+exception when capturing.
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+221</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 221</span>
+
+<span class='def def kw'>def</span> <span class='get_first_obj identifier id'>get_first_obj</span><span class='semicolon token'>;</span> <span class='raise identifier id'>raise</span> <span class='string val'>&quot;get_first_obj called on base stub&quot;</span> <span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>get_header</h3>
+</div><div id="get_header-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>get_header</span><span class='args'>(k)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+132
+133
+134</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 132</span>
+
+<span class='def def kw'>def</span> <span class='get_header identifier id'>get_header</span><span class='lparen token'>(</span><span class='k identifier id'>k</span><span class='rparen token'>)</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='find identifier id'>find</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span> <span class='eq op'>==</span> <span class='k identifier id'>k</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>get_parameterized_value</h3>
+</div><div id="get_parameterized_value-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>get_parameterized_value</span><span class='args'>(k)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+<p class="aliases">
+  <span class="aka">Also known as:</span>
+  
+    <tt id="parameterized_value-instance_method">parameterized_value</tt>
+  
+</p>
+</div><div class="section docstring">
+  <p>
+returns a header value after &quot;fully&quot; parsing it. Any semi-colon
+separated key=value or key parameters after the first value in the header
+will be returned as an extra HeaderParams array in addition to the value. T
+</p>
+<p>
+XXX NOTE, the current implementation will incorrectly parse several headers
+that may legally contain &#8217;;&#8217; with no special meaning. For
+example, &#8216;Referer:
+http://example.com;sometimes_a_url_parameter=1&#8217;
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 151</span>
+
+<span class='def def kw'>def</span> <span class='get_parameterized_value identifier id'>get_parameterized_value</span><span class='lparen token'>(</span><span class='k identifier id'>k</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='v identifier id'>v</span><span class='assign token'>=</span><span class='get_value_for identifier id'>get_value_for</span><span class='lparen token'>(</span><span class='k identifier id'>k</span><span class='rparen token'>)</span>
+    <span class='if if kw'>if</span> <span class='i identifier id'>i</span><span class='assign token'>=</span><span class='v identifier id'>v</span><span class='dot token'>.</span><span class='index identifier id'>index</span><span class='lparen token'>(</span><span class='string val'>';'</span><span class='rparen token'>)</span>
+      <span class='val identifier id'>val</span> <span class='assign token'>=</span> <span class='v identifier id'>v</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span><span class='i identifier id'>i</span><span class='rbrack token'>]</span>
+      <span class='parms identifier id'>parms</span> <span class='assign token'>=</span> <span class='v identifier id'>v</span><span class='lbrack token'>[</span><span class='lparen token'>(</span><span class='i identifier id'>i</span><span class='plus op'>+</span><span class='integer val'>1</span><span class='rparen token'>)</span><span class='dot2 op'>..</span><span class='integer val'>-1</span><span class='rbrack token'>]</span>
+      <span class='lbrack token'>[</span> <span class='val identifier id'>val</span><span class='comma token'>,</span> <span class='HeaderParams constant id'>HeaderParams</span><span class='dot token'>.</span><span class='parse identifier id'>parse</span><span class='lparen token'>(</span> <span class='parms identifier id'>parms</span> <span class='rparen token'>)</span> <span class='rbrack token'>]</span>
+    <span class='else else kw'>else</span>
+      <span class='lbrack token'>[</span> <span class='v identifier id'>v</span><span class='comma token'>,</span> <span class='HeaderParams constant id'>HeaderParams</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='rbrack token'>]</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>get_value_for</h3>
+</div><div id="get_value_for-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>get_value_for</span><span class='args'>(k)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+<p class="aliases">
+  <span class="aka">Also known as:</span>
+  
+    <tt id="get_header_value-instance_method">get_header_value</tt>
+  
+    <tt id="value_for-instance_method">value_for</tt>
+  
+</p>
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+136
+137
+138
+139
+140</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 136</span>
+
+<span class='def def kw'>def</span> <span class='get_value_for identifier id'>get_value_for</span><span class='lparen token'>(</span><span class='k identifier id'>k</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='h identifier id'>h</span><span class='assign token'>=</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='get_header identifier id'>get_header</span><span class='lparen token'>(</span><span class='k identifier id'>k</span><span class='rparen token'>)</span>
+    <span class='return return kw'>return</span> <span class='h identifier id'>h</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>reset_capture</h3>
+</div><div id="reset_capture-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>reset_capture</span><span class='args'></span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+This method will non-destructively reset the capture state on this object.
+The existing headers are maintained when this is called. See also:
+capture_complete? reset_capture!
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+249
+250
+251
+252</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 249</span>
+
+<span class='def def kw'>def</span> <span class='reset_capture identifier id'>reset_capture</span>
+  <span class='@capture_state ivar id'>@capture_state</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
+  <span class='self self kw'>self</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>reset_capture!</h3>
+</div><div id="reset_capture!-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>reset_capture!</span><span class='args'></span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+This method will destructively reset the capture state on this object. The
+existing headers array is emptied when this is called. See also:
+capture_complete?, reset_capture
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+257
+258
+259
+260</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 257</span>
+
+<span class='def def kw'>def</span> <span class='reset_capture! fid id'>reset_capture!</span>
+  <span class='@capture_state ivar id'>@capture_state</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>set_header</h3>
+</div><div id="set_header-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>set_header</span><span class='args'>(k, v)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+<p class="aliases">
+  <span class="aka">Also known as:</span>
+  
+    <tt id="set_all_for-instance_method">set_all_for</tt>
+  
+</p>
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 174</span>
+
+<span class='def def kw'>def</span> <span class='set_header identifier id'>set_header</span><span class='lparen token'>(</span><span class='k identifier id'>k</span><span class='comma token'>,</span><span class='v identifier id'>v</span><span class='rparen token'>)</span>
+  <span class='sel identifier id'>sel</span> <span class='assign token'>=</span> <span class='get_all identifier id'>get_all</span><span class='lparen token'>(</span><span class='k identifier id'>k</span><span class='rparen token'>)</span>
+
+  <span class='if if kw'>if</span> <span class='sel identifier id'>sel</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
+    <span class='self self kw'>self</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrack token'>[</span><span class='k identifier id'>k</span><span class='comma token'>,</span><span class='v identifier id'>v</span><span class='rbrack token'>]</span>
+    <span class='return return kw'>return</span> <span class='lbrack token'>[</span><span class='lbrack token'>[</span><span class='k identifier id'>k</span><span class='comma token'>,</span><span class='v identifier id'>v</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span>
+  <span class='else else kw'>else</span>
+    <span class='sel identifier id'>sel</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='v identifier id'>v</span> <span class='rbrace token'>}</span>
+    <span class='return return kw'>return</span> <span class='sel identifier id'>sel</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>set_parameterized_value</h3>
+</div><div id="set_parameterized_value-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>set_parameterized_value</span><span class='args'>(k, v)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+165
+166
+167
+168
+169
+170
+171</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 165</span>
+
+<span class='def def kw'>def</span> <span class='set_parameterized_value identifier id'>set_parameterized_value</span><span class='lparen token'>(</span><span class='k identifier id'>k</span><span class='comma token'>,</span> <span class='v identifier id'>v</span><span class='rparen token'>)</span>
+  <span class='raise identifier id'>raise</span> <span class='string val'>&quot;v is not an array. use set_header()&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='v identifier id'>v</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span> <span class='Array constant id'>Array</span>
+  <span class='parms identifier id'>parms</span> <span class='assign token'>=</span> <span class='v identifier id'>v</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span>
+  <span class='v identifier id'>v</span> <span class='assign token'>=</span> <span class='v identifier id'>v</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+  <span class='v identifier id'>v</span> <span class='lshft op'>&lt;&lt;</span> <span class='parms identifier id'>parms</span><span class='dot token'>.</span><span class='to_raw identifier id'>to_raw</span> <span class='if if_mod kw'>if</span> <span class='parms identifier id'>parms</span>
+  <span class='set_header identifier id'>set_header</span><span class='lparen token'>(</span><span class='k identifier id'>k</span><span class='comma token'>,</span><span class='v identifier id'>v</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>to_raw</h3>
+</div><div id="to_raw-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>to_raw</span><span class='args'></span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+The to_raw method returns a raw string of headers as they appear on the
+wire.
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+194
+195
+196</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 194</span>
+
+<span class='def def kw'>def</span> <span class='to_raw identifier id'>to_raw</span>
+  <span class='to_raw_array identifier id'>to_raw_array</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot;\r\n&quot;</span><span class='rparen token'>)</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;\r\n&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>to_raw_array</h3>
+</div><div id="to_raw_array-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>to_raw_array</span><span class='args'></span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+The to_raw_array method returns an interim formatted array of raw
+&quot;Cookie: Value&quot; strings.
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+119
+120
+121</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rbkb/http/headers.rb', line 119</span>
+
+<span class='def def kw'>def</span> <span class='to_raw_array identifier id'>to_raw_array</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='comma token'>,</span><span class='v identifier id'>v</span><span class='bitor op'>|</span> <span class='dstring node'>&quot;#{h}: #{v}&quot;</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div>
+  </div>
+
+</div>
+    </div>
+    <div id="yard_info">
+  Generated on Tuesday, October 06 2009 at 11:06:28 AM by 
+  <abbr class="yard" title="Yay! A Ruby Documentation Tool"><a href="http://yard.soen.ca">YARD</a></abbr> 
+  0.2.3.5 (ruby-1.8.6).
+</div>
+
+  </body>
+</html>
