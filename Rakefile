@@ -1,17 +1,18 @@
 require 'rubygems'
 require 'rake'
+require 'rake/clean'
 
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "rbkb-http"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{HTTP add-ons for Ruby BlackBag}
+    gem.description = %Q{HTTP libraries and tools based on and complementary to Ruby BlackBag}
     gem.email = "emonti@matasano.com"
     gem.homepage = "http://github.com/emonti/rbkb-http"
     gem.authors = ["Eric Monti"]
     gem.add_development_dependency "rspec"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency "rbkb"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
@@ -47,3 +48,4 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
