@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Eric Monti"]
-  s.date = %q{2009-10-06}
+  s.date = %q{2009-11-12}
   s.description = %q{HTTP libraries and tools based on and complementary to Ruby BlackBag}
   s.email = %q{emonti@matasano.com}
   s.extra_rdoc_files = [
@@ -44,8 +44,8 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/emonti/rbkb-http}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.4}
-  s.summary = %q{HTTP add-ons for Ruby BlackBag}
+  s.rubygems_version = %q{1.3.5}
+  s.summary = %q{HTTP protocol add-ons for Ruby BlackBag}
   s.test_files = [
     "spec/rbkb-http_spec.rb",
      "spec/spec_helper.rb",
