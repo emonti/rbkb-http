@@ -316,7 +316,7 @@ module Rbkb::Http
       _common_init(*args)
       @verb ||= "GET"
       @uri ||= URI.parse("/")
-      @version ||= "HTTP/1.1"
+      @version ||= "HTTP/1.0"
     end
 
     def to_raw

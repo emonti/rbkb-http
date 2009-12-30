@@ -3,13 +3,19 @@ module Rbkb::Http
   # A Request encapsulates all the entities in a HTTP request message
   # including the action header, general headers, and body.
   class Request < Base
-    attr_accessor :action
+    def action
+      @action ||= RequestAction.new
+    end
+
+    def action=(a)
+      @action = a
+    end
 
     alias first_entity action
     alias first_entity= action=
 
     def action_parameters
-      @action.parameters
+      action.parameters
     end
     
     def body_parameters
@@ -43,10 +49,8 @@ module Rbkb::Http
       Body.new(*args)
     end
 
-    # Returns a raw HTTP request for this instance. The instance must have 
-    # an action element defined at the bare minimum.
-    def to_raw(tmp_body=@body)
-      raise "this request has no action entity" unless first_entity()
+    # Returns a raw HTTP request for this instance. 
+    def to_raw()
       self.headers ||= default_headers_obj()
       self.body ||= default_body_obj()
 
@@ -57,8 +61,8 @@ module Rbkb::Http
         @headers.delete_header("Content-Length")
       end
 
-      bstr = tmp_body.to_raw
-      hdrs = (@headers).to_raw_array.unshift(first_entity.to_raw)
+      bstr = @body.to_raw
+      hdrs = @headers.to_raw_array.unshift(first_entity.to_raw)
       return "#{hdrs.join("\r\n")}\r\n\r\n#{bstr}"
     end
 

@@ -1,3 +1,6 @@
+== 0.2.1 / 2009-12-30
+  * Requests default to 'GET / HTTP/1.0'
+
 == 0.2.0 / 2009-10-06
   * split off rbkb/http from rbkb core.
   * added MultiPartFormParams support and TextPlainFormParams

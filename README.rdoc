@@ -6,12 +6,55 @@ HTTP protocol addons for the Ruby BlackBag (rbkb-http)
 
 == DESCRIPTION
 
-This library various includes HTTP protocol tools and libraries based on and 
+This library includes HTTP protocol tools and libraries based on and 
 complementary to the Ruby BlackBag library.
+
+At it's core rbkb-http is simply a set of serializable and desieralizable 
+objects for HTTP request and response messages.
 
 == REQUIREMENTS
 
 * ruby blackbag (rbkb) - http://emonti.github.com/rbkb
+
+
+== SYNOPSIS
+
+  require 'rubygems'
+  require 'rbkb/http'
+
+  # we start with a raw HTTP request string
+  rawdat = "POST /foo HTTP/1.0
+  Content-Length: 10
+
+  a=12345678"
+
+  # ... which we parse into an abstract object
+  req = Rbkb::Http::Request.new()
+  req.capture(rawdat) 
+
+  # Or you could just say this in one shot
+  #req = Rbkb::Http::Request.parse(rawdat)
+
+  # now we can mess with the request body
+  req.body << "extrastuff"
+
+  # .. and/or action line
+  req.action.version="HTTP/1.1"
+
+  # ... and/or headers
+  req.headers.set_header("Host", "somehost.com")
+
+  # and spit out a new request string (content-length is auto-calculated!)
+  puts req.to_raw
+  -/snip-
+
+Which produces:
+
+  POST /foo HTTP/1.1
+  Content-Length: 20
+  Host: somehost.com
+
+  a=12345678extrastuff
 
 == Copyright
 
